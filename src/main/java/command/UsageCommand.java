@@ -2,6 +2,7 @@ package command;
 
 import discord.Messenger;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IChannel;
 
 public class UsageCommand implements Command {
     
@@ -24,6 +25,8 @@ public class UsageCommand implements Command {
                 .append("  !streams               Show list of Splatoon streamers\n")
                 .toString();
         
-        messenger.sendMessage(event.getMessage().getChannel(), message);
+        IChannel channel = event.getMessage().getChannel();
+        messenger.sendMessage(channel, "Welcome to SplaTV: your source for Splatoon streams and videos");
+        messenger.sendQuoteMessage(channel, message);
     }
 }
